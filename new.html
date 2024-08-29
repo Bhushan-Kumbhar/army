@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Army</title>
+    <link rel="stylesheet" href="cc.css">
+</head>
+
+<body>
+    <!-- Header and Navigation as before -->
+    <header id="header-content">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>Indian Army</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" onclick="showSection('home-section')">Home</a></li>
+                    <li><a href="#" onclick="showSection('about-section')">About</a></li>
+                    <li><a href="#" onclick="showSection('history')">History</a></li>
+                    <li><a href="#" onclick="showSection('operations')">Operations</a></li>
+                    <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="auth-button" onclick="showSection('login-form')">Sign In</a>
+                <a href="#" class="auth-button" onclick="showSection('registration-form')">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Sections as before -->
+    <section id="home-section" style="display: block;">
+        <div class="container">
+            <h2>Welcome to the Indian Army</h2>
+            <p>The Indian Army is the land-based branch of the Indian Armed Forces and plays a crucial role in ensuring national security. Here are some key points about the Indian Army:</p>
+        </div>
+    </section>
+
+    <section id="about-section" style="display: none;">
+        <div class="container">
+            <h2>About the Indian Army</h2>
+        </div>
+    </section>
+
+    <section id="registration-form" style="display: none;">
+        <div class="container">
+            <h2>Registration Form</h2>
+            <form id="join-form" onsubmit="return showConfirmation()">
+                <!-- Registration Fields as before -->
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Login Form Section -->
+    <section id="login-form" style="display: none;">
+        <div class="container">
+            <h2>Login</h2>
+            <form id="signin-form" onsubmit="return showLoginMessage()">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Sign In</button>
+                <a href="#" onclick="showSection('reset-password-form')">Forgot Password?</a>
+            </form>
+        </div>
+    </section>
+
+    <!-- Reset Password Form Section -->
+    <section id="reset-password-form" style="display: none;">
+        <div class="container">
+            <h2>Reset Password</h2>
+            <form onsubmit="return resetPassword()">
+                <label for="mobile">Enter Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" required>
+
+                <label for="otp">OTP:</label>
+                <input type="text" id="otp" name="otp" required>
+
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" name="new-password" required>
+
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+
+                <button type="submit">Reset Password</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Indian Army. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add JavaScript directly in the HTML file -->
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('header-content').style.display = sectionId === 'login-form' || sectionId === 'registration-form' || sectionId === 'reset-password-form' ? 'none' : 'flex';
+
+            const sections = ['home-section', 'about-section', 'registration-form', 'login-form', 'reset-password-form'];
+            sections.forEach(id => {
+                document.getElementById(id).style.display = id === sectionId ? 'block' : 'none';
+            });
+        }
+
+        function showConfirmation() {
+            alert('Your registration is successfully completed!');
+            return false;
+        }
+
+        function showLoginMessage() {
+            alert('Login successful!');
+            return false;
+        }
+
+        function resetPassword() {
+            // Hide the reset password form
+            document.getElementById('reset-password-form').style.display = 'none';
+
+            // Show a success message
+            alert('Your password has been reset successfully!');
+
+            // Show the login form
+            document.getElementById('login-form').style.display = 'block';
+
+            return false; // Prevent form submission for demo purposes
+        }
+    </script>
+</body>
+
+</html>
